@@ -9,8 +9,8 @@ let package = Package(
             name: "Intercom",
             targets: ["Intercom"]),
         .library(
-            name: "CorePlot",
-            targets: ["CorePlot"]),
+            name: "IterableSDK",
+            targets: ["IterableSDK"]),
     ],
     targets: [
         .binaryTarget(
@@ -19,9 +19,9 @@ let package = Package(
             checksum: "a859e7534e1605492be6d1edb417fb8025ae2022e475d41fb5a7f70bd85560f7"
         ),
         .binaryTarget(
-            name: "CorePlot",
-            url: "https://github.com/core-plot/core-plot/releases/download/release_2.2/CorePlot_2.2.zip",
-            checksum: "93883245b0fa26266a14176bc22a1c63a507bd597da39164ba4780600031feae"
+            name: "IterableSDK",
+            url: "https://github.com/Iterable/swift-sdk/releases/download/6.3.2/IterableSDK.xcframework.zip",
+            checksum: "d02f37b40783569612d5e82f8da94acfca1e81d97a176dca866a86b8886560b3"
         ),
     ]
 )
