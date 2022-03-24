@@ -8,9 +8,9 @@ let package = Package(
         .library(
             name: "Intercom",
             targets: ["Intercom"]),
-//         .library(
-//             name: "CorePlot",
-//             targets: ["CorePlot"]),
+        .library(
+            name: "CorePlot",
+            targets: ["CorePlot"]),
     ],
     targets: [
         .binaryTarget(
@@ -18,10 +18,10 @@ let package = Package(
             url: "https://github.com/intercom/intercom-ios/releases/download/11.2.0/Intercom.xcframework.zip",
             checksum: "a859e7534e1605492be6d1edb417fb8025ae2022e475d41fb5a7f70bd85560f7"
         ),
-//         .binaryTarget(
-//             name: "CorePlot",
-//             url: "https://github.com/core-plot/core-plot/releases/download/release_2.2/CorePlot_2.2.zip",
-//             checksum: "93883245b0fa26266a14176bc22a1c63a507bd597da39164ba4780600031feae"
-//         ),
+        .binaryTarget(
+            name: "CorePlot",
+            url: "https://github.com/core-plot/core-plot/releases/download/release_2.2/CorePlot_2.2.zip",
+            checksum: "93883245b0fa26266a14176bc22a1c63a507bd597da39164ba4780600031feae"
+        ),
     ]
 )
