@@ -21,7 +21,7 @@ let package = Package(
         .binaryTarget(
             name: "Sentry",
             url: "https://github.com/getsentry/sentry-cocoa/releases/download/7.31.3/Sentry.xcframework.zip",
-            checksum: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            checksum: "73bbf75e36b29336f3c6a78eb6e904b344327f435cc7538b1e72365536a73e51"
         )
     ]
 )
