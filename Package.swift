@@ -3,17 +3,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "Intercom",
+    name: "Whoop External Swift Packages",
     products: [
         .library(
             name: "Intercom",
-            targets: ["Intercom"])
+            targets: ["Intercom"]),
+        .library(
+            name: "IterableSDK",
+            targets: ["IterableSDK"]),
     ],
     targets: [
         .binaryTarget(
             name: "Intercom",
             url: "https://github.com/intercom/intercom-ios/releases/download/12.2.1/Intercom.xcframework.zip",
             checksum: "705469f671e803e74a30e51ae00be5eade2377bac3f789cacb684cb594d0f6a6"
+        ),
+        .binaryTarget(
+            name: "IterableSDK",
+            url: "https://github.com/Iterable/swift-sdk/releases/download/6.3.2/IterableSDK.xcframework.zip",
+            checksum: "d02f37b40783569612d5e82f8da94acfca1e81d97a176dca866a86b8886560b3"
         )
     ]
 )
