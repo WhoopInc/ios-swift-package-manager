@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Intercom",
+    name: "Whoop External Swift Packages",
     products: [
         .library(
             name: "Intercom",
