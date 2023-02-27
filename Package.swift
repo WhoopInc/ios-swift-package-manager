@@ -11,6 +11,9 @@ let package = Package(
         .library(
             name: "IterableSDK",
             targets: ["IterableSDK"]),
+        .library(
+            name: "Kingfisher",
+            targets: ["Kingfisher"]),
     ],
     targets: [
         .binaryTarget(
@@ -22,6 +25,11 @@ let package = Package(
             name: "IterableSDK",
             url: "https://github.com/Iterable/swift-sdk/releases/download/6.3.2/IterableSDK.xcframework.zip",
             checksum: "d02f37b40783569612d5e82f8da94acfca1e81d97a176dca866a86b8886560b3"
+        ),
+        .binaryTarget(
+            name: "Kingfisher",
+            url: "https://github.com/onevcat/Kingfisher/releases/download/7.6.2/Kingfisher-7.6.2.zip",
+            checksum: "76a47eb79a6fb3387276a786d3f949db1e98d493d9fb8fa0eb5d5cec5d57ccda"
         )
     ]
 )
