@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "Whoop External Swift Packages",
+    platforms: [.iOS(.v15)],
     products: [
         .library(
             name: "ExternalPackages",
