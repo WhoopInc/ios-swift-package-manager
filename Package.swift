@@ -6,14 +6,8 @@ let package = Package(
     name: "Whoop External Swift Packages",
     products: [
         .library(
-            name: "Intercom",
-            targets: ["Intercom"]),
-        .library(
-            name: "IterableSDK",
-            targets: ["IterableSDK"]),
-        .library(
-            name: "Kingfisher",
-            targets: ["Kingfisher"]),
+            name: "ExternalPackages",
+            targets: ["Intercom", "IterableSDK", "Kingfisher"])
     ],
     targets: [
         .binaryTarget(
