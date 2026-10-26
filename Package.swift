@@ -1,35 +1,31 @@
-// swift-tools-version:5.3
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:6.2
+
 import PackageDescription
 
 let package = Package(
-    name: "Whoop External Swift Packages",
+    name: "ios-swift-package-manager",
+    platforms: [.iOS(.v18)],
     products: [
         .library(
-            name: "Intercom",
-            targets: ["Intercom"]),
+            name: "StripeCore",
+            targets: ["StripeCore"]),
         .library(
-            name: "IterableSDK",
-            targets: ["IterableSDK"]),
+            name: "StripeApplePay",
+            targets: ["StripeApplePay", "StripeCore"]),
         .library(
-            name: "Kingfisher",
-            targets: ["Kingfisher"]),
+            name: "StripePayments",
+            targets: ["StripePayments", "StripeCore", "Stripe3DS2"]),
+        .library(
+            name: "StripePaymentSheet",
+            targets: ["StripePaymentSheet", "StripePaymentsUI", "StripePayments", "StripeApplePay", "StripeUICore", "StripeCore", "Stripe3DS2"]),
     ],
     targets: [
-        .binaryTarget(
-            name: "Intercom",
-            url: "https://github.com/intercom/intercom-ios/releases/download/12.2.1/Intercom.xcframework.zip",
-            checksum: "705469f671e803e74a30e51ae00be5eade2377bac3f789cacb684cb594d0f6a6"
-        ),
-        .binaryTarget(
-            name: "IterableSDK",
-            url: "https://github.com/Iterable/swift-sdk/releases/download/6.3.2/IterableSDK.xcframework.zip",
-            checksum: "d02f37b40783569612d5e82f8da94acfca1e81d97a176dca866a86b8886560b3"
-        ),
-        .binaryTarget(
-            name: "Kingfisher",
-            url: "https://github.com/onevcat/Kingfisher/releases/download/7.6.2/Kingfisher-7.6.2.zip",
-            checksum: "76a47eb79a6fb3387276a786d3f949db1e98d493d9fb8fa0eb5d5cec5d57ccda"
-        )
+        .binaryTarget(name: "StripeCore", path: "Frameworks/Stripe/StripeCore.xcframework.zip"),
+        .binaryTarget(name: "StripeUICore", path: "Frameworks/Stripe/StripeUICore.xcframework.zip"),
+        .binaryTarget(name: "Stripe3DS2", path: "Frameworks/Stripe/Stripe3DS2.xcframework.zip"),
+        .binaryTarget(name: "StripeApplePay", path: "Frameworks/Stripe/StripeApplePay.xcframework.zip"),
+        .binaryTarget(name: "StripePayments", path: "Frameworks/Stripe/StripePayments.xcframework.zip"),
+        .binaryTarget(name: "StripePaymentsUI", path: "Frameworks/Stripe/StripePaymentsUI.xcframework.zip"),
+        .binaryTarget(name: "StripePaymentSheet", path: "Frameworks/Stripe/StripePaymentSheet.xcframework.zip"),
     ]
 )
