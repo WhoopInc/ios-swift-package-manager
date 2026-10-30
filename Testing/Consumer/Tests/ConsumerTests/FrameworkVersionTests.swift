@@ -15,7 +15,7 @@ private let expectedVersions = [
     "com.stripe.stripe-payment-sheet": "26.1.0",
 ]
 
-@Suite struct StripeFrameworkVersionTests {
+@Suite(.serialized) struct StripeFrameworkVersionTests {
     init() {
         _ = PaymentSheet.self
     }
@@ -53,7 +53,10 @@ private let expectedVersions = [
     }
 
     private func expectVersion(of bundleIdentifier: String) throws {
-        let bundle = try #require(Bundle(identifier: bundleIdentifier), "\(bundleIdentifier) is not linked")
+        let bundle = try #require(
+            Bundle.allFrameworks.first { $0.bundleIdentifier == bundleIdentifier },
+            "\(bundleIdentifier) is not linked"
+        )
         let linkedVersion = bundle.infoDictionary?["CFBundleShortVersionString"] as? String
         #expect(linkedVersion == expectedVersions[bundleIdentifier])
     }
