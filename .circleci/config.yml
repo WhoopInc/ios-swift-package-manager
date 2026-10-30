@@ -18,11 +18,13 @@ jobs:
       - run:
           name: Test framework versions against FrameworkVersionTests.swift
           working_directory: Testing/Consumer
+          no_output_timeout: 5m
           command: |
             xcodebuild test \
               -scheme Consumer \
               -destination 'platform=iOS Simulator,name=iPhone 17 Pro,OS=27.0' \
               -derivedDataPath /tmp/consumer-dd \
+              -collect-test-diagnostics never \
               -test-timeouts-enabled YES \
               -maximum-test-execution-time-allowance 60
 
