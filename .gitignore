@@ -1,1 +1,3 @@
 .build
+Testing/Consumer/.build/
+Testing/Consumer/.swiftpm/
