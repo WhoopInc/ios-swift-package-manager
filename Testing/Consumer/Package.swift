@@ -21,5 +21,13 @@ let package = Package(
                 .product(name: "StripePaymentSheet", package: "ios-swift-package-manager"),
             ]
         ),
+        .testTarget(
+            name: "ConsumerTests",
+            dependencies: [
+                "Consumer",
+                .product(name: "StripeCore", package: "ios-swift-package-manager"),
+                .product(name: "StripePaymentSheet", package: "ios-swift-package-manager"),
+            ]
+        ),
     ]
 )
