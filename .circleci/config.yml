@@ -1,0 +1,26 @@
+version: 2.1
+
+jobs:
+  verify-frameworks:
+    macos:
+      xcode: "27.0.0"
+    resource_class: m4pro.medium
+    steps:
+      - checkout
+      - run:
+          name: Verify framework versions, checksums, and upstream provenance
+          command: ./scripts/verify_frameworks.sh
+      - run:
+          name: Build a consumer package against every product
+          working_directory: Testing/Consumer
+          command: |
+            xcodebuild build \
+              -scheme Consumer \
+              -destination 'generic/platform=iOS Simulator' \
+              -derivedDataPath /tmp/consumer-dd \
+              -quiet
+
+workflows:
+  verify:
+    jobs:
+      - verify-frameworks
