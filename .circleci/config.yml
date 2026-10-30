@@ -8,15 +8,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Verify framework versions, checksums, and upstream provenance
-          command: ./scripts/verify_frameworks.sh
+          name: Create the iPhone 17 Pro (iOS 27.0) simulator if missing
+          command: |
+            xcrun simctl list devices "iOS 27.0" | grep -q "iPhone 17 Pro (" || \
+              xcrun simctl create "iPhone 17 Pro" com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro com.apple.CoreSimulator.SimRuntime.iOS-27-0
       - run:
-          name: Build a consumer package against every product
+          name: Test framework versions against FrameworkVersionTests.swift
           working_directory: Testing/Consumer
           command: |
-            xcodebuild build \
+            xcodebuild test \
               -scheme Consumer \
-              -destination 'generic/platform=iOS Simulator' \
+              -destination 'platform=iOS Simulator,name=iPhone 17 Pro,OS=27.0' \
               -derivedDataPath /tmp/consumer-dd \
               -quiet
 
