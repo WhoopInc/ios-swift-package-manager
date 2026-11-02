@@ -1,0 +1,34 @@
+version: 2.1
+
+jobs:
+  verify-frameworks:
+    macos:
+      xcode: "27.0.0"
+    resource_class: m4pro.medium
+    steps:
+      - checkout
+      - run:
+          name: Create the iPhone 17 Pro (iOS 27.0) simulator if missing
+          command: |
+            xcrun simctl list devices "iOS 27.0" | grep -q "iPhone 17 Pro (" || \
+              xcrun simctl create "iPhone 17 Pro" com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro com.apple.CoreSimulator.SimRuntime.iOS-27-0
+      - run:
+          name: Boot the simulator
+          command: xcrun simctl bootstatus "iPhone 17 Pro" -b
+      - run:
+          name: Test framework versions against FrameworkVersionTests.swift
+          working_directory: Testing/Consumer
+          no_output_timeout: 5m
+          command: |
+            xcodebuild test \
+              -scheme Consumer \
+              -destination 'platform=iOS Simulator,name=iPhone 17 Pro,OS=27.0' \
+              -derivedDataPath /tmp/consumer-dd \
+              -collect-test-diagnostics never \
+              -test-timeouts-enabled YES \
+              -maximum-test-execution-time-allowance 60
+
+workflows:
+  verify:
+    jobs:
+      - verify-frameworks
