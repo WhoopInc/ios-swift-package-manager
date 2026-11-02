@@ -7,7 +7,7 @@ Public Swift package that wraps prebuilt third-party XCFrameworks for the WHOOP 
 - SwiftPM requires exactly one XCFramework per archive. Never point a `binaryTarget` at a vendor archive that bundles several frameworks.
 - Binaries are extracted from the vendor's official release unchanged. Never rebuild, strip, or edit a framework.
 - Binary targets can't declare dependencies, so each product lists every framework its module loads at runtime.
-- Create zips with `ditto -c -k --keepParent <Name>.xcframework <Name>.xcframework.zip` so the framework sits at the archive root.
+- We never create or build XCFrameworks. When a vendor ships several XCFrameworks in one archive (Stripe's `Stripe.xcframework.zip`), this repo is how we distribute them: each shipped XCFramework is repackaged as-is into its own zip, `ditto -c -k --keepParent <Name>.xcframework <Name>.xcframework.zip`, so SwiftPM can consume it.
 
 ## Layout
 

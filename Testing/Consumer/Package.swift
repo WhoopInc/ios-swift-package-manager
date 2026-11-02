@@ -29,5 +29,6 @@ let package = Package(
                 .product(name: "StripePaymentSheet", package: "ios-swift-package-manager"),
             ]
         ),
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )

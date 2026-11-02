@@ -27,5 +27,6 @@ let package = Package(
         .binaryTarget(name: "StripePayments", path: "Frameworks/Stripe/StripePayments.xcframework.zip"),
         .binaryTarget(name: "StripePaymentsUI", path: "Frameworks/Stripe/StripePaymentsUI.xcframework.zip"),
         .binaryTarget(name: "StripePaymentSheet", path: "Frameworks/Stripe/StripePaymentSheet.xcframework.zip"),
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )
